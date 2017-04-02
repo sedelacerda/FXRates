@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170401232713) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "rates", force: :cascade do |t|
     t.string   "provider"
     t.float    "usdclp"
