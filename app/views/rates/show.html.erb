@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Provider:</strong>
+  <%= @rate.provider %>
+</p>
+
+<p>
+  <strong>Usdclp:</strong>
+  <%= @rate.usdclp %>
+</p>
+
+<p>
+  <strong>Eurclp:</strong>
+  <%= @rate.eurclp %>
+</p>
+
+<p>
+  <strong>Gbpclp:</strong>
+  <%= @rate.gbpclp %>
+</p>
+
+<%= link_to 'Edit', edit_rate_path(@rate) %> |
+<%= link_to 'Back', rates_path %>
