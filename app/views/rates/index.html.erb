@@ -6,9 +6,10 @@
   <thead>
     <tr>
       <th>Provider</th>
-      <th>Usdclp</th>
-      <th>Eurclp</th>
-      <th>Gbpclp</th>
+      <th>USDCLP</th>
+      <th>EURCLP</th>
+      <th>GBPCLP</th>
+      <th>Fecha</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,9 +21,7 @@
         <td><%= rate.usdclp %></td>
         <td><%= rate.eurclp %></td>
         <td><%= rate.gbpclp %></td>
-        <td><%= link_to 'Show', rate %></td>
-        <td><%= link_to 'Edit', edit_rate_path(rate) %></td>
-        <td><%= link_to 'Destroy', rate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= rate.created_at.strftime("%d/%m/%Y a las %H:%M:%S") %></td>
       </tr>
     <% end %>
   </tbody>
