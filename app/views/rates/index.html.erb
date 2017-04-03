@@ -21,7 +21,7 @@
         <td><%= rate.usdclp %></td>
         <td><%= rate.eurclp %></td>
         <td><%= rate.gbpclp %></td>
-        <td><%= rate.created_at.strftime("%d/%m/%Y a las %H:%M:%S") %></td>
+        <td><%= rate.created_at.strftime("%d/%m/%Y a las %H:%M:%S").in_time_zone("Santiago") %></td>
       </tr>
     <% end %>
   </tbody>
