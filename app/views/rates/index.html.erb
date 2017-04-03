@@ -1,32 +1,91 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Rates</h1>
+<div class="col-xs-10 col-xs-offset-1 col-md-5 col-md-offset-0 col-lg-3 col-lg-offset-0">
+  <h2>Capitaria</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>Provider</th>
-      <th>USDCLP</th>
-      <th>EURCLP</th>
-      <th>GBPCLP</th>
-      <th>Fecha</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @rates.each do |rate| %>
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= rate.provider %></td>
-        <td><%= rate.usdclp %></td>
-        <td><%= rate.eurclp %></td>
-        <td><%= rate.gbpclp %></td>
-        <td><%= rate.created_at.strftime("%d/%m/%Y a las %H:%M:%S") %></td>
+        <th>Provider</th>
+        <th>USDCLP</th>
+        <th>EURCLP</th>
+        <th>GBPCLP</th>
+        <th>Fecha</th>
+        <th>Hora</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @capitaria_rates.each do |rate| %>
+        <tr>
+          <td><%= rate.provider %></td>
+          <td><%= rate.usdclp %></td>
+          <td><%= rate.eurclp %></td>
+          <td><%= rate.gbpclp %></td>
+          <td><%= rate.created_at.strftime("%d/%m/%Y") %></td>
+          <td><%= rate.created_at.strftime("%H:%M:%S") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
-<%= link_to 'New Rate', new_rate_path %>
+<div class="col-xs-10 col-xs-offset-1 col-md-5 col-md-offset-1 col-lg-3 col-lg-offset-1">
+  <h2>Yahoo</h2>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Provider</th>
+        <th>USDCLP</th>
+        <th>EURCLP</th>
+        <th>GBPCLP</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @yahoo_rates.each do |rate| %>
+        <tr>
+          <td><%= rate.provider %></td>
+          <td><%= rate.usdclp %></td>
+          <td><%= rate.eurclp %></td>
+          <td><%= rate.gbpclp %></td>
+          <td><%= rate.created_at.strftime("%d/%m/%Y") %></td>
+          <td><%= rate.created_at.strftime("%H:%M:%S") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="col-xs-10 col-xs-offset-1 col-md-5 col-md-offset-0 col-lg-3 col-lg-offset-1">
+  <h2>Bloomberg</h2>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Provider</th>
+        <th>USDCLP</th>
+        <th>EURCLP</th>
+        <th>GBPCLP</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @bloomberg_rates.each do |rate| %>
+        <tr>
+          <td><%= rate.provider %></td>
+          <td><%= rate.usdclp %></td>
+          <td><%= rate.eurclp %></td>
+          <td><%= rate.gbpclp %></td>
+          <td><%= rate.created_at.strftime("%d/%m/%Y") %></td>
+          <td><%= rate.created_at.strftime("%H:%M:%S") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

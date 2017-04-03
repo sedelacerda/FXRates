@@ -4,7 +4,9 @@ class RatesController < ApplicationController
   # GET /rates
   # GET /rates.json
   def index
-    @rates = Rate.all
+    @capitaria_rates = Rate.where(provider: 'Capitaria').order(created_at: :desc)
+    @yahoo_rates = Rate.where(provider: 'Yahoo').order(created_at: :desc)
+    @bloomberg_rates = Rate.where(provider: 'Bloomberg').order(created_at: :desc)
   end
 
   # GET /rates/1
