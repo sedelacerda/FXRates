@@ -64,8 +64,11 @@ class Rate < ApplicationRecord
 
   def self.yahoo_getValue (parity)
     response = open('https://es-us.finanzas.yahoo.com/quote/' << parity << '=X?ltr=1').read
-    aux = response.partition(%Q(data-reactid="241">)).last
-    value = aux.partition('</span>').first
+    aux = response.partition(%Q(<div id="quote-market-notice")).first
+    aux = aux[aux.rindex(%Q(<div))..-1]
+    aux = aux.partition(%Q(</span>)).first
+    aux = aux[aux.rindex(%Q(>))..-1]
+    value = aux[1..-1]
     return value
   end
 
