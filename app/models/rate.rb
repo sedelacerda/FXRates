@@ -58,6 +58,7 @@ class Rate < ApplicationRecord
   def self.capitaria_getValue (response, parity)
     aux = response.partition(parity).last
     aux = aux.partition('<td>').last
+    aux = aux.partition('<td>').last
     value = aux.partition('</td>').first
     return value
   end
