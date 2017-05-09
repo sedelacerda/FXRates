@@ -7,6 +7,39 @@ class RatesController < ApplicationController
     @capitaria_rates = Rate.where(provider: 'Capitaria').order(created_at: :desc).limit(20)
     @yahoo_rates = Rate.where(provider: 'Yahoo').order(created_at: :desc).limit(20)
     @bloomberg_rates = Rate.where(provider: 'Bloomberg').order(created_at: :desc).limit(20)
+
+    @capitaria_last_day_records = Rate.where(provider: 'Capitaria').where('created_at >= ?', 1.day.ago).count
+    @yahoo_last_day_records = Rate.where(provider: 'Yahoo').where('created_at >= ?', 1.day.ago).count
+    @bloomberg_last_day_records = Rate.where(provider: 'Bloomberg').where('created_at >= ?', 1.day.ago).count
+  end
+
+  # GET /rate/usdclp
+  def last_usdclp
+    index = -1
+    found = false
+    while !found
+      @last_rate = Rate.all[index]
+      if @last_rate.usdclp == 0.0
+        index = index - 1
+      else
+        found = true
+      end
+    end
+
+    @last_rate = Rate.all[index]
+    render json: @last_rate.usdclp
+  end
+
+  # GET /rate/gbpclp
+  def last_gbpclp
+    @last_rate = Rate.last
+    render json: @last_rate.gbpclp
+  end
+
+  # GET /rate/eurclp
+  def last_eurclp
+    @last_rate = Rate.last
+    render json: @last_rate.eurclp
   end
 
   # GET /rates/1

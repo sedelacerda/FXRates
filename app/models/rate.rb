@@ -55,6 +55,25 @@ class Rate < ApplicationRecord
 
   end
 
+  def self.last_usdclp_average(provider)
+    last_records = Rate.where(["usdclp > ? and provider = ?", 0.0, provider]).last(10).pluck("usdclp")
+    sum = 0.0
+    last_records.each do |r|
+      sum = sum + r.to_f
+    end
+    avg = sum/10
+    return avg
+  end
+
+  def self.create(params)
+    super
+    if params[:usdclp].to_f <= 0.0 || params[:eurclp].to_f <= 0.0 || params[:gbpclp].to_f <= 0.0
+      ErrorMailer.notify_error_email(params[:provider]).deliver
+      puts "Email enviado a sebadelacerda@gmail.com"
+    end
+    return Rate.where(provider: params[:provider]).last
+  end
+
   def self.capitaria_getValue (response, parity)
     aux = response.partition(parity).last
     aux = aux.partition('<td>').last
